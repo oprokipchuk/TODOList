@@ -16,7 +16,6 @@ public class UserDAO {
     }
 
     public boolean checkLogin(String login) throws SQLException {
-
         String sql = "SELECT login FROM user WHERE login = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, login);
@@ -29,13 +28,12 @@ public class UserDAO {
     }
 
     public void addUser(User user, String password) throws SQLException {
-
         String sql = "INSERT INTO user (login, password) VALUES (?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, user.getLogin());
         statement.setString(2, password);
         statement.executeUpdate();
-
+        statement.close();
     }
 
 }
