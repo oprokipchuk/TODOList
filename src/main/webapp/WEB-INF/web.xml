@@ -46,4 +46,10 @@
     <url-pattern>/register.do</url-pattern>
   </servlet-mapping>
 
+  <!-- Listeners -->
+
+  <listener>
+    <listener-class>listener.ServletContextListenerClass</listener-class>
+  </listener>
+
 </web-app>
