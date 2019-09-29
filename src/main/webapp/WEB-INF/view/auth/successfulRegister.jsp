@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<base href="${pageContext.request.contextPath}">
 </head>
 <body>
 	<h2>Вітаю! Ви успішно зареєструвались)</h2>

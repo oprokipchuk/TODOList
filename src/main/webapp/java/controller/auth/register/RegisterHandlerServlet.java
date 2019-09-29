@@ -38,7 +38,7 @@ public class RegisterHandlerServlet extends HttpServlet {
             ex.printStackTrace();
         }
 
-        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/register").forward(request, response);
     }
 
 }
