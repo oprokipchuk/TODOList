@@ -1,6 +1,7 @@
 package controller.auth.register;
 
 import dao.UserDAO;
+import encryption.Encryptor;
 import entity.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +23,14 @@ public class RegisterHandlerServlet {
         User newUser = new User(0, userPassword);
 
         if (userDAO.checkLogin(userLogin) == false) {
+            String encryptedPassword = Encryptor.md5Custom(userPassword);
             userDAO.addUser(newUser, userPassword);
+            request.getSession().setAttribute("User", newUser);
+            request.getRequestDispatcher("/WEB-INF/view/auth/successfulRegister.jsp");
         }
         else {
 
         }
-
     }
 
 }
