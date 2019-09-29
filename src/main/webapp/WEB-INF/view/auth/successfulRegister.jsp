@@ -7,7 +7,7 @@
 	<!--<base href="${pageContext.request.contextPath}">-->
 </head>
 <body>
-	<h2>Вітаю! Ви успішно зареєструвались)</h2>
+	<h2>Вітаю, ${User.login}! Ви успішно зареєструвались)</h2>
 	<a href="${pageContext.request.contextPath}/groups">До роботи!</a>
 </body>
 </html>
