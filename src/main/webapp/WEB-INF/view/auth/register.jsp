@@ -7,7 +7,7 @@
 </head>
 <body>
 	
-	<form action="register.do">
+	<form action="register.do" method="POST">
 		
 		Login: <input type="text" name="login">
 		Password: <input type="password" name="password">

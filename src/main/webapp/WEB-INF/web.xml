@@ -50,7 +50,7 @@
 
   <servlet>
     <servlet-name>registerHandlerServlet</servlet-name>
-    <servlet-class>controller.auth.register.RegisterPageServlet</servlet-class>
+    <servlet-class>controller.auth.register.RegisterHandlerServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

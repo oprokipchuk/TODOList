@@ -4,33 +4,41 @@ import dao.UserDAO;
 import encryption.Encryptor;
 import entity.User;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.SQLException;
 
-public class RegisterHandlerServlet {
+public class RegisterHandlerServlet extends HttpServlet {
 
     private UserDAO userDAO;
 
-    public void init() {
+    public void init() throws ServletException {
+        super.init();
         userDAO = new UserDAO();
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String userLogin = request.getParameter("login");
         String userPassword = request.getParameter("password");
         User newUser = new User(0, userPassword);
 
-        if (userDAO.checkLogin(userLogin) == false) {
-            String encryptedPassword = Encryptor.md5Custom(userPassword);
-            userDAO.addUser(newUser, userPassword);
-            request.getSession().setAttribute("User", newUser);
-            request.getRequestDispatcher("/WEB-INF/view/auth/successfulRegister.jsp");
+        try {
+            if (userDAO.checkLogin(userLogin) == false) {
+                String encryptedPassword = Encryptor.md5Custom(userPassword);
+                userDAO.addUser(newUser, encryptedPassword);
+                request.getSession().setAttribute("User", newUser);
+                request.getRequestDispatcher("/WEB-INF/view/auth/successfulRegister.jsp").forward(request, response);
+            }
         }
-        else {
-
+        catch (SQLException ex) {
+            ex.printStackTrace();
         }
+        
+        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 
 }
