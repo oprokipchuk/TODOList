@@ -37,7 +37,7 @@ public class RegisterHandlerServlet extends HttpServlet {
         catch (SQLException ex) {
             ex.printStackTrace();
         }
-        
+
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 

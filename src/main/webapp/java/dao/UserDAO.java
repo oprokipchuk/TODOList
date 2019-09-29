@@ -25,7 +25,7 @@ public class UserDAO {
         boolean existsLogin = resultOfQuery.next();
 
         statement.close();
-        return resultOfQuery.next();
+        return existsLogin;
     }
 
     public void addUser(User user, String password) throws SQLException {
