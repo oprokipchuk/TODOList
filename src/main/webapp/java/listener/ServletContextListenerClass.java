@@ -1,6 +1,7 @@
 package listener;
 
 import com.mysql.jdbc.Driver;
+import dao.UserDAO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -39,6 +40,7 @@ public class ServletContextListenerClass implements ServletContextListener {
         context.setAttribute("dataBaseStatement", statement);
         context.setAttribute("dataBaseConnection", connection);
 
+        UserDAO.setConnection(connection);
     }
 
     public void contextDestroyed(ServletContextEvent event) {
