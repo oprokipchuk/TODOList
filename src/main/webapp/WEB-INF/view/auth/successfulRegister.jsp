@@ -4,10 +4,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<base href="${pageContext.request.contextPath}">
+	<!--<base href="${pageContext.request.contextPath}">-->
 </head>
 <body>
 	<h2>Вітаю! Ви успішно зареєструвались)</h2>
-	<a href="groups">До роботи!</a>
+	<a href="${pageContext.request.contextPath}/groups">До роботи!</a>
 </body>
 </html>
