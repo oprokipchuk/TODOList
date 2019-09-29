@@ -24,12 +24,24 @@
     <mime-type>text/css</mime-type>
   </mime-mapping>
 
+  <!-- Servlet Context Params -->
+
+  <context-param>
+    <param-name>dbLogin</param-name>
+    <param-value>root</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>dbPassword</param-name>
+    <param-value>root</param-value>
+  </context-param>
+
   <!-- Servlets -->
 
   <servlet>
-  <servlet-name>registerPageServlet</servlet-name>
-  <servlet-class>controller.auth.register.RegisterPageServlet</servlet-class>
-</servlet>
+    <servlet-name>registerPageServlet</servlet-name>
+    <servlet-class>controller.auth.register.RegisterPageServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>registerPageServlet</servlet-name>
