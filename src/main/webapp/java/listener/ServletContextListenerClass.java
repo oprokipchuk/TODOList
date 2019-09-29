@@ -9,13 +9,13 @@ import java.sql.*;
 
 public class ServletContextListenerClass implements ServletContextListener {
 
-    private static String login;
-    private static String password;
-    private static String url = "jdbc:mysql://localhost:3306/dietsite?useUnicode=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private String login;
+    private String password;
+    private String url = "jdbc:mysql://localhost:3306/todolist_database?useUnicode=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
-    private static Connection connection;
-    private static Statement statement;
-    private static ResultSet resultSet;
+    private Connection connection;
+    private Statement statement;
+    private ResultSet resultSet;
 
     public void contextInitialized(ServletContextEvent event) {
 
@@ -32,8 +32,6 @@ public class ServletContextListenerClass implements ServletContextListener {
             }
 
             statement = connection.createStatement();
-            //System.out.println(statement.executeUpdate("INSERT INTO users (login, email, password) VALUES ('oleg2', 'oleg2@mail.ru', '12345')"));
-
         } catch (SQLException exc) {
             exc.printStackTrace();
         }
