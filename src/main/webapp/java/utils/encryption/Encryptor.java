@@ -1,4 +1,4 @@
-package encryption;
+package utils.encryption;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

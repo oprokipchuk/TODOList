@@ -1,7 +1,7 @@
 package controller.auth.register;
 
 import dao.UserDAO;
-import encryption.Encryptor;
+import utils.encryption.Encryptor;
 import entity.User;
 
 import javax.servlet.ServletException;
