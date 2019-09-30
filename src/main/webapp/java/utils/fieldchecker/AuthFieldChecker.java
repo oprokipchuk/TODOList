@@ -24,6 +24,22 @@ public class AuthFieldChecker {
         return ErrorCodes.CHECK_PASSED;
     }
 
+    public ErrorCodes checkPassword(String password) {
+        if (password.length() < 4 || password.length() > 20) {
+            return ErrorCodes.INCORRECT_PASSWORD_LENGTH;
+        }
+
+        String regExp = "[A-Za-z0-9_.,/*!#]+";
+        Pattern correctLoginPattern = Pattern.compile(regExp);
+        Matcher matcher = correctLoginPattern.matcher(password);
+
+        if (matcher.matches() == false) {
+            return ErrorCodes.INCORRECT_PASSWORD_PATTERN;
+        }
+
+        return ErrorCodes.CHECK_PASSED;
+    }
+
 
     public enum ErrorCodes implements ErrorCode {
 
@@ -31,6 +47,18 @@ public class AuthFieldChecker {
             @Override
             public String getMessage() {
                 return "successful operation";
+            }
+        },
+        INCORRECT_PASSWORD_LENGTH {
+            @Override
+            public String getMessage() {
+                return "password must be longer than 4 and shorter than 20 characters!";
+            }
+        },
+        INCORRECT_PASSWORD_PATTERN{
+            @Override
+            public String getMessage() {
+                return "password can contain only A-Z, a-z, 0-9 and symbols '_.,/*!#'";
             }
         },
         INCORRECT_LOGIN_LENGTH {
