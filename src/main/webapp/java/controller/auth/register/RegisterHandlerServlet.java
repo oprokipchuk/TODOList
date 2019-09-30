@@ -3,6 +3,7 @@ package controller.auth.register;
 import dao.UserDAO;
 import utils.encryption.Encryptor;
 import entity.User;
+import utils.fieldchecker.AuthFieldChecker;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +23,15 @@ public class RegisterHandlerServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String userLogin = request.getParameter("login");
-        String userPassword = request.getParameter("password");
+        String userLogin = request.getParameter("login").trim();
+        String userPassword = request.getParameter("password").trim();
+
+        AuthFieldChecker checker = new AuthFieldChecker();
+
+        if (checker.checkLogin(userLogin).isError()) {
+
+        }
+
         User newUser = new User(0, userPassword);
 
         try {
