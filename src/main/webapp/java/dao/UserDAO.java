@@ -27,6 +27,23 @@ public class UserDAO {
         return existsLogin;
     }
 
+    public String getLogin(String login) throws SQLException {
+        String sql = "SELECT login FROM user WHERE login = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, login);
+        ResultSet resultOfQuery = statement.executeQuery();
+
+        if (resultOfQuery.next()) {
+            String loginToReturn = resultOfQuery.getString(1);
+            statement.close();
+            return loginToReturn;
+        }
+        else {
+            statement.close();
+            return null;
+        }
+    }
+
     public void addUser(User user, String password) throws SQLException {
         String sql = "INSERT INTO user (login, password) VALUES (?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);

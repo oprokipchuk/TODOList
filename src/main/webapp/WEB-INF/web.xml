@@ -36,6 +36,33 @@
     <param-value>root</param-value>
   </context-param>
 
+  <!-- Filters -->
+
+    <!-- Auth -->
+
+  <filter>
+    <filter-name>IsAlreadyLoggedCheckerFilter</filter-name>
+    <filter-class>filter.auth.IsAlreadyLoggedCheckerFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>IsAlreadyLoggedCheckerFilter</filter-name>
+    <servlet-name>registerPageServlet</servlet-name>
+    <servlet-name>registerHandlerServlet</servlet-name>
+  </filter-mapping>
+
+    <!-- InputValidation -->
+
+  <filter>
+    <filter-name>RegisterInputValidationFilter</filter-name>
+    <filter-class>filter.validation.RegisterInputValidationFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>RegisterInputValidationFilter</filter-name>
+    <servlet-name>registerHandlerServlet</servlet-name>
+  </filter-mapping>
+
   <!-- Servlets -->
 
   <servlet>
@@ -56,6 +83,16 @@
   <servlet-mapping>
     <servlet-name>registerHandlerServlet</servlet-name>
     <url-pattern>/register.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>controller.auth.logout.LogoutServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 
   <!-- Listeners -->

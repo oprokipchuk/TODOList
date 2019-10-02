@@ -1,6 +1,7 @@
 package controller.auth.register;
 
 import dao.UserDAO;
+import service.UserService;
 import utils.encryption.Encryptor;
 import entity.User;
 import utils.fieldchecker.AuthFieldChecker;
@@ -16,11 +17,11 @@ import java.sql.SQLException;
 
 public class RegisterHandlerServlet extends HttpServlet {
 
-    private UserDAO userDAO;
+    private UserService userService;
 
     public void init() throws ServletException {
         super.init();
-        userDAO = new UserDAO();
+        userService = new UserService();
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,9 +53,9 @@ public class RegisterHandlerServlet extends HttpServlet {
         else {
 
             try {
-                if (userDAO.checkLogin(userLogin) == false) {
+                if (userService.checkLogin(userLogin) == false) {
                     String encryptedPassword = Encryptor.md5Custom(userPassword);
-                    userDAO.addUser(newUser, encryptedPassword);
+                    userService.addUser(newUser, encryptedPassword);
                     session.setAttribute("User", newUser);
                     request.getRequestDispatcher("/WEB-INF/view/auth/successfulRegister.jsp").forward(request, response);
                     return;
@@ -63,6 +64,8 @@ public class RegisterHandlerServlet extends HttpServlet {
             catch (SQLException ex) {
                 ex.printStackTrace();
             }
+
+            response.sendRedirect(request.getContextPath() + "/register");
         }
     }
 
