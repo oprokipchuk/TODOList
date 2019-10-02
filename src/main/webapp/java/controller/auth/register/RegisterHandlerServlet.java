@@ -32,41 +32,20 @@ public class RegisterHandlerServlet extends HttpServlet {
         String userPassword = request.getParameter("password").trim();
 
         User newUser = new User(0, userLogin);
-        AuthFieldChecker checker = new AuthFieldChecker();
-
-        boolean hasErrors = false;
-        ErrorCode loginError = checker.checkLogin(userLogin);
-        if (loginError.isError()) {
-            hasErrors = true;
-            session.setAttribute("loginError", loginError.getMessage());
-        }
-        ErrorCode passwordError = checker.checkPassword(userPassword);
-        if (passwordError.isError()) {
-            hasErrors = true;
-            session.setAttribute("passwordError", passwordError.getMessage());
-        }
-
-        if (hasErrors) {
-            response.sendRedirect(request.getContextPath() + "/register");
-            session.setAttribute("incorrectUserData", newUser);
-        }
-        else {
-
-            try {
-                if (userService.checkLogin(userLogin) == false) {
-                    String encryptedPassword = Encryptor.md5Custom(userPassword);
-                    userService.addUser(newUser, encryptedPassword);
-                    session.setAttribute("User", newUser);
-                    request.getRequestDispatcher("/WEB-INF/view/auth/successfulRegister.jsp").forward(request, response);
-                    return;
-                }
+        try {
+            if (userService.checkLogin(userLogin) == false) {
+                String encryptedPassword = Encryptor.md5Custom(userPassword);
+                userService.addUser(newUser, encryptedPassword);
+                session.setAttribute("User", newUser);
+                request.getRequestDispatcher("/WEB-INF/view/auth/successfulRegister.jsp").forward(request, response);
+                return;
             }
-            catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-
-            response.sendRedirect(request.getContextPath() + "/register");
         }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        session.setAttribute("alreadyExistingUserError", "user already exists");
+        response.sendRedirect(request.getContextPath() + "/register");
     }
 
 }
