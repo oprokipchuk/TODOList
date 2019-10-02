@@ -41,6 +41,16 @@
     <!-- Auth -->
 
   <filter>
+    <filter-name>IsUserLoggedCheckerFilter</filter-name>
+    <filter-class>filter.auth.IsUserLoggedCheckerFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>IsUserLoggedCheckerFilter</filter-name>
+    <url-pattern>/groups/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
     <filter-name>IsAlreadyLoggedCheckerFilter</filter-name>
     <filter-class>filter.auth.IsAlreadyLoggedCheckerFilter</filter-class>
   </filter>
@@ -49,6 +59,7 @@
     <filter-name>IsAlreadyLoggedCheckerFilter</filter-name>
     <servlet-name>registerPageServlet</servlet-name>
     <servlet-name>registerHandlerServlet</servlet-name>
+    <servlet-name>LoginServlet</servlet-name>
   </filter-mapping>
 
     <!-- InputValidation -->
@@ -93,6 +104,16 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>controller.auth.login.LoginServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
 
   <!-- Listeners -->

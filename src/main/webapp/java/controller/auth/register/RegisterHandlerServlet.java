@@ -28,8 +28,8 @@ public class RegisterHandlerServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        String userLogin = request.getParameter("login").trim();
-        String userPassword = request.getParameter("password").trim();
+        String userLogin = request.getParameter("login");
+        String userPassword = request.getParameter("password");
 
         User newUser = new User(0, userLogin);
         try {
