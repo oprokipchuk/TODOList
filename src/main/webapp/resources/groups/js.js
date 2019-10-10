@@ -23,7 +23,6 @@ async function refreshGroups() {
 
 		for (let i = 0; i < groups.length; i++) {
 			let elemLi = document.createElement('li');
-			//elemLi.setAttribute("onclick", "showInfo(this)");
 			elemLi.setAttribute("data-id", JSON.parse(groups[i]).id)
 			elemLi.setAttribute("data-num", i + 1);
 			let elemP = document.createElement('p');
@@ -127,9 +126,6 @@ async function showInfo() {
 		infoName.innerHTML = group.name;
 		infoOwners.innerHTML = '<li>' + userLogin + '</li>';
 
-		///openBtn.nextElementSibling.href = base + "/groups/group/" + elemNum + "/tasks/";
-		//openBtn.onclick = function() {this.nextElementSibling.dispatchEvent(new Event('click'));}
-
 		openBtn.onclick = function() {
 			let openLink = base + "/groups/group/" + infoForm.parentElement.getAttribute('data-num') + "/tasks/";
 			window.location = openLink;
@@ -142,32 +138,6 @@ async function showInfo() {
 			return false;
 		};
 
-
-		/*let elemP = document.createElement("p");
-		elemP.innerHTML = "Owners";
-
-		let elemUList = document.createElement("ul");
-
-		let elemLi = document.createElement("li");
-		elemLi.innerHTML = userLogin;
-
-		let elemOpenA = document.createElement("a");
-		elemOpenA.innerHTML = "open group";
-		elemOpenA.href = base + "/groups/group/" + elemNum + "/tasks/";
-
-		let elemBr = document.createElement("br");
-
-		let elemDeleteA = document.createElement("a");
-		elemDeleteA.innerHTML = "delete group";
-		elemDeleteA.href = "#";
-		elemDeleteA.onclick = doDelete;
-
-		Content.appendChild(elemP);
-		elemUList.appendChild(elemLi);
-		Content.appendChild(elemUList);
-		Content.appendChild(elemOpenA);
-		Content.appendChild(elemBr);
-		Content.appendChild(elemDeleteA);*/
 	}
 }
 
@@ -191,22 +161,4 @@ async function showCreationForm() {
 				</form>
 		`;
 
-	/*let elemP = document.createElement("p");
-	elemP.innerHTML = "Name:";
-
-	let elemBr = document.createElement("br");
-
-	let elemInput = document.createElement("input");
-	elemInput.setAttribute("id", "newGroupInput");
-	elemInput.setAttribute("type", "text");
-
-	let elemCreateA = document.createElement("a");
-	elemCreateA.innerHTML = "create group";
-	elemCreateA.href = "#";
-	elemCreateA.onclick = doCreate;
-
-	Content.appendChild(elemP);
-	Content.appendChild(elemBr);
-	Content.appendChild(elemInput);
-	Content.appendChild(elemCreateA);*/
 }

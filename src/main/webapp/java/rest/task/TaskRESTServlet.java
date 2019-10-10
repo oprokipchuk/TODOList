@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import entity.Group;
 import entity.Task;
 import entity.User;
-import json.container.TaskEdited;
 import service.GroupService;
 import service.JSONService;
 import service.TaskService;
@@ -63,7 +62,6 @@ public class TaskRESTServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         response.setContentType("application/json");
         System.out.println(base.toString());
-        //response.getWriter().println(base.toString());
         mapper.writeValue(response.getOutputStream(), base);
     }
 
@@ -98,8 +96,6 @@ public class TaskRESTServlet extends HttpServlet {
             e.printStackTrace();
             response.sendError(500);
         }
-
-        //response.sendRedirect(request.getContextPath() + "/groups/group/" + groupNum + "/tasks/");
     }
 
     @Override
@@ -126,7 +122,6 @@ public class TaskRESTServlet extends HttpServlet {
             e.printStackTrace();
         }
         response.setStatus(HttpServletResponse.SC_OK);
-        //response.sendRedirect(request.getContextPath() + "/groups");
     }
 
     @Override
@@ -161,7 +156,6 @@ public class TaskRESTServlet extends HttpServlet {
             response.sendError(500);
         }
         response.setStatus(HttpServletResponse.SC_OK);
-        //response.sendRedirect(request.getContextPath() + "/groups");
     }
 
 }

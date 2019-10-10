@@ -163,17 +163,6 @@
     <url-pattern>/groups</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <servlet-name>GroupsCreationServlet</servlet-name>
-    <servlet-class>controller.group.GroupCreationServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>GroupsCreationServlet</servlet-name>
-    <url-pattern>/groups/new</url-pattern>
-    <!--<url-pattern>/groups/delete</url-pattern>-->
-  </servlet-mapping>
-
   <!--<servlet>
     <servlet-name>GroupTaskURIHandlerServlet</servlet-name>
     <servlet-class>controller.group.GroupTaskURIHandlerServlet</servlet-class>
@@ -218,16 +207,6 @@
   <servlet-mapping>
     <servlet-name>GroupTasksPageServlet</servlet-name>
     <url-pattern>/secure/GroupTasksPageServlet</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>TaskCreationServlet</servlet-name>
-    <servlet-class>controller.task.TaskCreationServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>TaskCreationServlet</servlet-name>
-    <url-pattern>/secure/TaskCreationServlet</url-pattern>
   </servlet-mapping>
 
   <!-- Listeners -->

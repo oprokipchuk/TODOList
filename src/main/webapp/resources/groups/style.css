@@ -48,13 +48,10 @@ section ul {
 section ul li {
 	cursor: pointer;
 	position: relative;
-	/*padding: 12px 8px 12px 40px*/;
 	list-style-type: none;
 	background: #eee;
-	/*background-color: #e3eff3;*/
 	font-size: 18px;
 	transition: 0.2s;
-	/* make the list items unselectable */
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -67,10 +64,8 @@ section ul > li > p {
 	padding : 10px;
 }
 
-/* Set zebra-stripes: all odd list items to a different color */
 section ul li:nth-child(odd) {
 	background: #f9f9f9;
-	/*background-color: #cde3eb;*/
 }
 
 section ul li:hover {
@@ -187,7 +182,7 @@ aside .form-row select {
  	border-radius: 3px;
 	width: 60%;
   	padding: 5px;
-  	font-size: 14px;            /* This won't work in Chrome or Safari */
+  	font-size: 14px;
 }
 
 aside .form-row textarea {

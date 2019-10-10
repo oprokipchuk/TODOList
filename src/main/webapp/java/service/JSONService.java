@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import entity.Group;
-import json.container.TaskEdited;
 
 import javax.servlet.ServletInputStream;
 import java.io.BufferedReader;
@@ -36,11 +35,6 @@ public class JSONService {
     public JsonNode JSONStringToNode(String JSON) throws IOException {
         return mapper.readTree(JSON);
 
-    }
-    public TaskEdited JSONToUserEditedData(String JSON) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        TaskEdited taskEditedData = mapper.readValue(JSON, TaskEdited.class);
-        return taskEditedData;
     }
 
     public ObjectNode getBaseNode() {

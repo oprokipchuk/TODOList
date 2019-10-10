@@ -54,49 +54,6 @@
 
 	</main>
 
-
-	<!--<h2>Tasks of group ${group.groupName}!</h2>
-	<p>Hi, ${User.login}</p>
-	<c:forEach var="taskItem" items="${group.taskList}" varStatus="loop">
-		<div data-tasknum="${loop.index + 1}">
-			<hr>
-			<a href="task">${taskItem.name}</a>
-			<a href="edit?taskNum=${loop.index + 1}">edit task</a>
-			<input type="submit" value="delete task" onclick="doDelete(this)">
-			<hr>
-		</div>
-	</c:forEach>
-	<a href="new">new task</a>
-
-	<script>
-		
-		deleteUrl = 'delete?taskNum=';
-
-		async function doDelete(event) {
-
-			/*let formData = new FormData();
-			let gNum = event.parentNode.getAttribute("data-groupnum");
-			//console.log(gNum);
-			formData.append("groupNum", gNum);
-			formData.append("someMessage", "message");
-			console.log(formData.get("groupNum"));*/
-			let tNum = event.parentNode.getAttribute("data-tasknum");
-
-			let response = await fetch(deleteUrl + tNum, {
-				method : 'DELETE',
-			});
-
-			if (response.ok) {
-				console.log("successful delete");
-				window.location.reload(false);
-				//elemToDelete = Document.body.querySelector('div[data-groupnum = ' + gNum + ']');
-
-			}
-
-		}
-
-	</script>-->
-
 	<script src="${pageContext.request.contextPath}/resources/groups/tasks/tasks.js"></script>
 
 </body>

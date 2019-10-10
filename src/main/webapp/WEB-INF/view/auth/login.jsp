@@ -20,14 +20,5 @@
 	  </fieldset>
 	</form>
 
-	<!--<form action="login" method="POST">
-
-		<p class="err">${incorrectLoginOrPasswordError}</p>
-		Login: <input type="text" name="login" value="${incorrectUserData.login}"><br>
-		Password: <input type="password" name="password">
-		<input type="submit" value="login">
-
-	</form>-->
-
 </body>
 </html>

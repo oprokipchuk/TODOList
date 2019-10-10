@@ -57,7 +57,6 @@ function showTasks() {
 
 	for (let i = 0; i < filteredTasks.length; i++) {
 			let elemLi = document.createElement('li');
-			//elemLi.setAttribute("onclick", "showInfo(this)");
 			elemLi.setAttribute("data-id", filteredTasks[i].id)
 			elemLi.setAttribute("data-num", filteredTasks[i].taskNum);
 			let elemP = document.createElement('p');
@@ -129,16 +128,6 @@ async function showInfo() {
 		infoName.innerHTML = task.name;
 		infoStatus.innerHTML = task.status;
 		infoDescription.innerHTML = task.description;
-		
-		/*Content.innerHTML = `<p>Status:</p>`;
-		let elemPStatus = document.createElement("p");
-		elemPStatus.innerHTML = task.status;
-		Content.appendChild(elemPStatus);
-
-		Content.innerHTML += `<p>Description</p>`
-		let elemPDescription = document.createElement("p");
-		elemPDescription.innerHTML = task.description;
-		Content.appendChild(elemPDescription);*/
 	}
 }
 
@@ -183,50 +172,6 @@ async function showCreationForm() {
 			event.preventDefault();
 			return false;
 		};
-
-	/*let elemP1 = document.createElement("p");
-	elemP1.innerHTML = "Name:";
-
-	let elemBr1 = document.createElement("br");
-
-	let elemInput = document.createElement("input");
-	elemInput.setAttribute("id", "newTaskName");
-	elemInput.setAttribute("type", "text");
-
-	let elemP2 = document.createElement("p");
-	elemP2.innerHTML = "Status:";
-
-	let elemBr2 = document.createElement("br");
-
-	let elemSelect = document.createElement("select");
-	elemSelect.setAttribute("id", "newTaskStatus");
-	elemSelect.setAttribute("type", "text");
-	elemSelect.innerHTML = `
-		<option value="not started">Task not started</option>
-		<option value="in process">Task in process</option>
-		<option value="done">Task is done</option>
-	`;
-
-	let elemP3 = htmlToElement("<p>Description:</p>");
-	let elemBr3 = document.createElement("br");
-
-	let elemTextArea = htmlToElement(
-			`<textarea id="newTaskDescription" cols="30" rows="10"></textarea>`
-		);
-
-	let elemCreateA = htmlToElement(`<a href="#">create task</a>`)
-	elemCreateA.onclick = doCreate;
-
-	Content.appendChild(elemP1);
-	Content.appendChild(elemBr1);
-	Content.appendChild(elemInput);
-	Content.appendChild(elemP2);
-	Content.appendChild(elemBr2);
-	Content.appendChild(elemSelect);
-	Content.appendChild(elemP3);
-	Content.appendChild(elemBr3);
-	Content.appendChild(elemTextArea);
-	Content.appendChild(elemCreateA);*/
 }
 
 async function showEditForm(event) {
@@ -289,10 +234,6 @@ async function showEditForm(event) {
 			event.preventDefault();
 			return false;
 		};
-		/*editForm.onsubmit = function(event) {
-			console.log('edit form submit');
-			//event.preventDefault();
-		}*/
 	}	
 }
 
@@ -360,7 +301,7 @@ async function doDelete(event) {
 
 function htmlToElement(html) {
     var template = document.createElement('template');
-    html = html.trim(); // Never return a text node of whitespace as the result
+    html = html.trim();
     template.innerHTML = html;
     return template.content.firstChild;
 }

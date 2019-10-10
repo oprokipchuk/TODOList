@@ -38,7 +38,7 @@ public class RegisterHandlerServlet extends HttpServlet {
             if (userService.checkLogin(userLogin) == false && userService.checkEmail(userEmail) == false) {
                 String encryptedPassword = Encryptor.md5Custom(userPassword);
                 userService.addUser(newUser, encryptedPassword);
-                session.setAttribute("User", newUser);
+                session.setAttribute("User", userService.getUserByLogin(newUser.getLogin()));
                 request.getRequestDispatcher("/WEB-INF/view/auth/successfulRegister.jsp").forward(request, response);
                 return;
             }
