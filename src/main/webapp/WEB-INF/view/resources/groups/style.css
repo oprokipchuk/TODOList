@@ -1,0 +1,107 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+header {
+	padding: 20px;
+	height: 100px;
+	color: white;
+	background-color: black;
+}
+
+header a {
+	color: white;
+}
+
+section {
+	width: 50%;
+	height: 1000px;
+	border: 0px solid black;
+	float: left;
+}
+
+section .groupsHeader {
+	padding: 12px 8px 12px 40px;
+	font-size: 18px;
+	background: teal;
+	color: white;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+section ul {
+	margin: 0;
+	padding: 0;
+}
+
+section ul li {
+	cursor: pointer;
+	position: relative;
+	padding: 12px 8px 12px 40px;
+	list-style-type: none;
+	background: #eee;
+	/*background-color: #e3eff3;*/
+	font-size: 18px;
+	transition: 0.2s;
+	/* make the list items unselectable */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Set zebra-stripes: all odd list items to a different color */
+section ul li:nth-child(odd) {
+	background: #f9f9f9;
+	/*background-color: #cde3eb;*/
+}
+
+section ul li:hover {
+	background: #ddd;
+}
+
+section ul li.checked {
+	background: teal;
+	color: white;
+}
+
+section .close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+section .close:hover {
+  background-color: crimson;
+  color: white;
+}
+
+aside {
+	width: 50%;
+	height: 1000px;
+	border: 0px solid black;
+	float: right;
+	background-color: #f2f4f7;
+}
+
+aside .content {
+	padding: 50px;
+}
+
+aside .groupHeader {
+	padding: 12px 8px 12px 40px;
+	font-size: 18px;
+	background: #404b69;
+	color: white;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

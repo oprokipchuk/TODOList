@@ -18,6 +18,10 @@ public class UserService {
         return !(userDAO.getLogin(login) == null);
     }
 
+    public boolean checkEmail(String email) throws SQLException {
+        return !(userDAO.getEmail(email) == null);
+    }
+
     public boolean checkPassword(String login, String password) throws SQLException {
 
         String encodedPassword = Encryptor.md5Custom(password);
@@ -40,5 +44,4 @@ public class UserService {
     public void addUser(User user, String password) throws SQLException {
         userDAO.addUser(user, password);
     }
-
 }

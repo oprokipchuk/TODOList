@@ -1,0 +1,259 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+header {
+	padding: 20px;
+	height: 100px;
+	color: white;
+	background-color: black;
+	font-family: "Helvetica", "Arial", sans-serif;
+	font-weight: bold;
+}
+
+header a {
+	color: white;
+}
+
+section {
+	width: 50%;
+	height: 1000px;
+	border: 0px solid black;
+	float: left;
+}
+
+section .tasksHeader {
+	padding: 12px 8px 12px 40px;
+	font-size: 18px;
+	background: teal;
+	color: white;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-family: "Helvetica", "Arial", sans-serif;
+	font-weight: bold;
+	height: 80px;
+}
+
+section ul {
+	margin: 0;
+	padding: 0;
+}
+
+section ul li {
+	cursor: pointer;
+	position: relative;
+	/*padding: 12px 8px 12px 40px*/;
+	list-style-type: none;
+	background: #eee;
+	/*background-color: #e3eff3;*/
+	font-size: 18px;
+	transition: 0.2s;
+	/* make the list items unselectable */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+section ul > li > p {
+	margin: 0;
+	display: inline-block;
+	padding : 10px;
+}
+
+section ul span {
+	float: right;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+section .changeButton {
+	height: 100%;
+	padding: 8px 17px;
+	margin: 0; 
+	/*border: 1px solid black;*/
+	display: inline-block;
+}
+
+section .changeButton:hover {
+	background-color: rgb(200,200,200);
+}
+
+section .edit {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Set zebra-stripes: all odd list items to a different color */
+section ul li:nth-child(odd) {
+	background: #f9f9f9;
+	/*background-color: #cde3eb;*/
+}
+
+section ul li:hover {
+	background: #ddd;
+}
+
+section ul li.checked {
+	background: teal;
+	color: white;
+}
+
+section .close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+section .close:hover {
+  background-color: crimson;
+  color: white;
+}
+
+aside {
+	width: 50%;
+	height: 1000px;
+	border: 0px solid black;
+	float: right;
+	background-color: #f2f4f7;
+}
+
+aside .content {
+	padding: 20px;
+}
+
+aside .taskHeader {
+	padding: 12px 8px 12px 40px;
+	font-size: 18px;
+	background: #404b69;
+	color: white;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-family: "Helvetica", "Arial", sans-serif;
+	font-weight: bold;
+	height: 80px;
+}
+
+aside .create-task-form {
+	text-align: center;
+  	background-color: #F6F7F8;
+  	border: 1px solid #D6D9DC;
+  	border-radius: 3px;
+  	color: #5D6063;
+  	font-family: "Helvetica", "Arial", sans-serif;
+  	font-size: 16px;
+  	line-height: 1.3;
+  	margin: 0 auto;
+  	padding: 20px;
+  	width: 100%;
+  	vertical-align: top;
+}
+
+aside .info-task-form {
+	text-align: center;
+  	background-color: #F6F7F8;
+  	border: 1px solid #D6D9DC;
+  	border-radius: 3px;
+  	color: #5D6063;
+  	font-family: "Helvetica", "Arial", sans-serif;
+  	font-size: 16px;
+  	line-height: 1.3;
+  	margin: 0 auto;
+  	padding: 20px;
+  	width: 100%;
+  	vertical-align: top;
+}
+
+aside .form-row {
+	display: block;
+}
+
+.form-row input[type='text'] {
+  	background-color: #FFFFFF;
+  	border: 1px solid #D6D9DC;
+  	border-radius: 3px;
+	width: 60%;
+  	padding: 7px;
+  	font-size: 14px;
+}
+
+#filterInput {
+	width: 30%;
+}
+
+aside .form-row p {
+  	/*background-color: #FFFFFF;*/
+  	border-bottom : 1px solid #D6D9DC;
+	width: 60%;
+  	padding: 7px;
+  	font-size: 14px;
+  	margin: 0;
+  	display: inline-block;
+}
+
+aside .form-row select {
+	background-color: #FFFFFF;
+ 	border: 1px solid #D6D9DC;
+ 	border-radius: 3px;
+	width: 60%;
+  	padding: 5px;
+  	font-size: 14px;            /* This won't work in Chrome or Safari */
+}
+
+aside .form-row textarea {
+  	font-family: "Helvetica", "Arial", sans-serif;
+  	font-size: 14px;
+
+  	border: 1px solid #D6D9DC;
+  	border-radius: 3px;
+
+
+	width: 60%;
+  	min-height: 200px;
+  	padding: 7px;
+  	resize: none;
+  	display: inline-block;
+}
+
+aside .form-row label {
+	vertical-align: top;
+	text-align: right;
+	width: 25%;
+  	margin-bottom: 15px;
+  	display: inline-block;
+  	margin-right: 30px;
+}
+
+.form-row button {
+	margin-top: 20px;
+  	font-size: 16px;
+  	font-weight: bold;
+
+  	color: #FFFFFF;
+  	background-color: #5995DA;
+
+  	border: none;
+  	border-radius: 3px;
+
+  	padding: 10px 40px;
+  	cursor: pointer;
+}
+
+aside .form-row button:hover {
+  	background-color: #76AEED;
+}
+
+aside .form-row button:active {
+  	background-color: #407FC7;
+}

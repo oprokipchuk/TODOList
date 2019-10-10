@@ -26,8 +26,11 @@ public class RegisterInputValidationFilter implements Filter {
 
         String userLogin = request.getParameter("login").trim();
         String userPassword = request.getParameter("password").trim();
+        String userPasswordRepeat = request.getParameter("cpassword").trim();
+        String userEmail = request.getParameter("email").trim();
 
         User newUser = new User(0, userLogin);
+        newUser.setEmail(userEmail);
         AuthFieldChecker checker = new AuthFieldChecker();
 
         boolean hasErrors = false;
@@ -36,7 +39,12 @@ public class RegisterInputValidationFilter implements Filter {
             hasErrors = true;
             session.setAttribute("loginError", loginError.getMessage());
         }
-        ErrorCode passwordError = checker.checkPassword(userPassword);
+        ErrorCode emailError = checker.checkEmail(userEmail);
+        if (emailError.isError()) {
+            hasErrors = true;
+            session.setAttribute("emailError", emailError.getMessage());
+        }
+        ErrorCode passwordError = checker.checkPassword(userPassword, userPasswordRepeat);
         if (passwordError.isError()) {
             hasErrors = true;
             session.setAttribute("passwordError", passwordError.getMessage());
@@ -49,6 +57,7 @@ public class RegisterInputValidationFilter implements Filter {
         else {
             request.setAttribute("login", userLogin);
             request.setAttribute("password", userPassword);
+            request.setAttribute("email", userEmail);
             filterChain.doFilter(request, response);
         }
 

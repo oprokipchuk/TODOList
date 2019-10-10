@@ -4,15 +4,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		.err {
-			color : red;
-		}
-	</style>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/auth/login/login.css">
+	<style>.err {color : red; font-size: 10px}</style>
 </head>
 <body>
 	
-	<form action="register.do" method="POST">
+	<form id="msform" action="register.do" method="POST">
+	  <fieldset>
+	    <h2 class="fs-title">Register to your account</h2>
+	    <br><br>
+		<p class="err">${alreadyExistingUserError}</p>
+		<p class="err">${emailError}</p>
+	    <input type="text" name="email" placeholder="Email" value="${incorrectUserData.email}"/>
+		<p class="err">${loginError}</p>
+	    <input type="text" name="login" placeholder="Login" value="${incorrectUserData.login}"/>
+	    <p class="err">${passwordError}</p>
+	    <input type="password" name="password" placeholder="Password" />
+	    <p class="err">${cpasswordError}</p>
+	    <input type="password" name="cpassword" placeholder="Repeat password" />
+	    <input type="submit" name="next" class="next action-button" value="Register" />
+	  </fieldset>
+	</form>
+
+
+	<!--<form action="register.do" method="POST">
 
 		<p class="err">${loginError}</p>
 		<p class="err">${alreadyExistingUserError}</p>
@@ -21,7 +36,7 @@
 		Password: <input type="password" name="password">
 		<input type="submit" value="register">
 
-	</form>
+	</form>-->
 
 </body>
 </html>

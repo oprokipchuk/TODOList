@@ -15,6 +15,7 @@ public class RegisterPageServlet extends HttpServlet {
 
         request.setAttribute("loginError", session.getAttribute("loginError"));
         request.setAttribute("passwordError", session.getAttribute("passwordError"));
+        request.setAttribute("emailError", session.getAttribute("emailError"));
         request.setAttribute("incorrectUserData", session.getAttribute("incorrectUserData"));
         request.setAttribute("alreadyExistingUserError", session.getAttribute("alreadyExistingUserError"));
 

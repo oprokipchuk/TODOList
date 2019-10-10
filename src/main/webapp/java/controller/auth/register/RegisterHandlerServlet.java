@@ -28,12 +28,14 @@ public class RegisterHandlerServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
+        String userEmail = request.getParameter("email");
         String userLogin = request.getParameter("login");
         String userPassword = request.getParameter("password");
 
         User newUser = new User(0, userLogin);
+        newUser.setEmail(userEmail);
         try {
-            if (userService.checkLogin(userLogin) == false) {
+            if (userService.checkLogin(userLogin) == false && userService.checkEmail(userEmail) == false) {
                 String encryptedPassword = Encryptor.md5Custom(userPassword);
                 userService.addUser(newUser, encryptedPassword);
                 session.setAttribute("User", newUser);

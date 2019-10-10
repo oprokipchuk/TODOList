@@ -38,6 +38,20 @@
 
   <!-- Filters -->
 
+  <!-- Data Conversion -->
+
+  <filter>
+    <filter-name>JsonConverter</filter-name>
+    <filter-class>filter.jsonconversion.JSONConverterFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>JsonConverter</filter-name>
+    <servlet-name>GroupRESTServlet</servlet-name>
+    <servlet-name>TaskRESTServlet</servlet-name>
+    <url-pattern>/groups/group/*</url-pattern>
+  </filter-mapping>
+
     <!-- Auth -->
 
   <filter>
@@ -48,6 +62,7 @@
   <filter-mapping>
     <filter-name>IsUserLoggedCheckerFilter</filter-name>
     <url-pattern>/groups/*</url-pattern>
+    <url-pattern>/secure/*</url-pattern>
   </filter-mapping>
 
   <filter>
@@ -62,6 +77,18 @@
     <servlet-name>LoginServlet</servlet-name>
   </filter-mapping>
 
+  <!-- Redirection -->
+
+  <filter>
+    <filter-name>GroupTaskURIRedirectionFilter</filter-name>
+    <filter-class>filter.redirection.GroupTaskURIRedirectionFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>GroupTaskURIRedirectionFilter</filter-name>
+    <url-pattern>/groups/group/*</url-pattern>
+  </filter-mapping>
+
     <!-- InputValidation -->
 
   <filter>
@@ -72,6 +99,16 @@
   <filter-mapping>
     <filter-name>RegisterInputValidationFilter</filter-name>
     <servlet-name>registerHandlerServlet</servlet-name>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>LoginInputValidationFilter</filter-name>
+    <filter-class>filter.validation.LoginInputValidationFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>LoginInputValidationFilter</filter-name>
+    <servlet-name>LoginServlet</servlet-name>
   </filter-mapping>
 
   <!-- Servlets -->
@@ -114,6 +151,83 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GroupsPageServlet</servlet-name>
+    <servlet-class>controller.group.GroupsPageServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GroupsPageServlet</servlet-name>
+    <url-pattern>/groups</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GroupsCreationServlet</servlet-name>
+    <servlet-class>controller.group.GroupCreationServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GroupsCreationServlet</servlet-name>
+    <url-pattern>/groups/new</url-pattern>
+    <!--<url-pattern>/groups/delete</url-pattern>-->
+  </servlet-mapping>
+
+  <!--<servlet>
+    <servlet-name>GroupTaskURIHandlerServlet</servlet-name>
+    <servlet-class>controller.group.GroupTaskURIHandlerServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GroupTaskURIHandlerServlet</servlet-name>
+    <url-pattern>/groups/group/*</url-pattern>
+  </servlet-mapping>-->
+
+  <!-- Servlets(REST) -->
+
+  <servlet>
+    <servlet-name>GroupRESTServlet</servlet-name>
+    <servlet-class>rest.group.GroupRESTServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GroupRESTServlet</servlet-name>
+    <url-pattern>/groups/get</url-pattern>
+    <url-pattern>/groups/post</url-pattern>
+    <url-pattern>/groups/delete</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TaskRESTServlet</servlet-name>
+    <servlet-class>rest.task.TaskRESTServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>TaskRESTServlet</servlet-name>
+    <url-pattern>/secure/TaskRESTServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Servlets(HIDDEN) -->
+
+  <servlet>
+  <servlet-name>GroupTasksPageServlet</servlet-name>
+  <servlet-class>controller.task.GroupTasksPageServlet</servlet-class>
+</servlet>
+
+  <servlet-mapping>
+    <servlet-name>GroupTasksPageServlet</servlet-name>
+    <url-pattern>/secure/GroupTasksPageServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TaskCreationServlet</servlet-name>
+    <servlet-class>controller.task.TaskCreationServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>TaskCreationServlet</servlet-name>
+    <url-pattern>/secure/TaskCreationServlet</url-pattern>
   </servlet-mapping>
 
   <!-- Listeners -->
